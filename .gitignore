@@ -1,6 +1,11 @@
 outputs/
 clip_music_video/
 frontend/node_modules
+.env.local
+.pytorch_pretrained_biggan
+frontend/public/FinishedClips
+node_modules/
+stylegan.pt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

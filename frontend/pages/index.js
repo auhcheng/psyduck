@@ -1,51 +1,23 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
-import ReactPlayer from 'react-player'
-import Link from 'next/link'
-import Date from '../components/date'
+import Head from "next/head";
+import styles from "../styles/Index.module.css";
+import SignIn from "../components/signin";
+import siteTitle from "../components/layout"
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
-
-export default function Home({ allPostsData }) {
+export default function Home() {
   return (
-    <Layout home>
+    <div className={styles.container}>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{ siteTitle }</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
-      <section className={utilStyles.headingMd}>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>
-              <a>{title}</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
-          </li>
-          
-          ))}
-        </ul>
-      </section>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' />
-    </Layout>
-  )
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>Login</h1>
+
+        <p className={styles.description}>Please sign in</p>
+
+        <SignIn redirectPath="/home"></SignIn>
+      </main>
+    </div>
+  );
 }

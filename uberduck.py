@@ -10,11 +10,10 @@ UBERDUCK_SECRET = os.environ["UBERDUCK_SECRET"]
 speaker = 'jayz'
 poem = "This is just a test."
 
-def uberduck(speaker, poem):
+def uberduck(speaker, poem, filename):
     r = requests.post("https://api.uberduck.ai/speak",
             auth=(UBERDUCK_KEY, UBERDUCK_SECRET),
             data=json.dumps({"speech": poem, "voice": speaker, "pace": 0.7})
-            # '{"speech":"' + poem + '","voice":"' + speaker + '"}',
             )
     print(r)
     print(r.json())
@@ -34,7 +33,8 @@ def uberduck(speaker, poem):
             break
 
     output_dir = "outputs"
-    filename = wget.download(download_link, out=output_dir)
+    wget.download(download_link, out=output_dir)
+    os.rename(output_dir + '/audio.wav', output_dir + '/' + filename)
     print(filename)
 
 if __name__ == '__main__':
