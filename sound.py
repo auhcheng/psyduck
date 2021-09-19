@@ -5,7 +5,7 @@ from random import random
 def combine_audio(rap_track, background, id):
     rap_track_seg = AudioSegment.from_wav(rap_track)
     # background_seg = AudioSegment.from_wav(background)
-    background_seg = background - 10
+    background_seg = background - 4
     output = rap_track_seg.overlay(background_seg)
     output.export("./outputs/" + id + "-final_music.wav", format="wav")
 
