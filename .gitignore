@@ -1,3 +1,7 @@
+outputs/
+clip_music_video/
+clip_music_video/.pytorch_pretrained_biggan
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
